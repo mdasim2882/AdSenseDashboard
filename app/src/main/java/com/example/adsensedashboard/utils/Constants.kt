@@ -1,3 +1,5 @@
 package com.example.adsensedashboard.utils
 
-const val RC_SIGN_IN = 9001
+const val SOURCE = "Source"
+const val USER = "User"
+const val EMAIL = "Email"

@@ -1,7 +1,6 @@
 package com.example.adsensedashboard.viewModels
 
 import android.app.Application
-import android.view.View
 import androidx.activity.result.ActivityResultRegistry
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
