@@ -38,6 +38,7 @@ class MainActivity : AppCompatActivity() {
         authenticateWithGoogle()
     }
 
+    //region Helper Methods
     private fun updateUI() {
         binding.signInButton.setOnClickListener { v -> performSignIn() }
         binding.signOutBtn.setOnClickListener { v -> performSignOut() }
@@ -74,6 +75,7 @@ class MainActivity : AppCompatActivity() {
 
         googleSignInClient = GoogleSignIn.getClient(this, gso)
     }
+    //endregion
 
     //region OnClick Methods
     private fun performSignIn() {
@@ -81,7 +83,6 @@ class MainActivity : AppCompatActivity() {
         if (mAuth.currentUser == null)
             viewModel.signIn(googleSignInClient)
     }
-
 
     private fun performSignOut() {
         Firebase.auth.signOut()
