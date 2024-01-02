@@ -17,6 +17,7 @@ import com.example.adsensedashboard.viewModels.AuthViewModelFactory
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
+import com.google.android.gms.common.api.Scope
 import com.google.firebase.Firebase
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.auth
@@ -70,6 +71,7 @@ class MainActivity : AppCompatActivity() {
         mAuth = Firebase.auth
         val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
             .requestIdToken(getString(R.string.default_web_client_id))
+            .requestScopes(Scope("https://www.googleapis.com/auth/adsense.readonly"))
             .requestEmail()
             .build()
 
