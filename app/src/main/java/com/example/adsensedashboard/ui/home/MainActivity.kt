@@ -8,9 +8,6 @@ import androidx.lifecycle.ViewModelProvider
 import com.example.adsensedashboard.R
 import com.example.adsensedashboard.databinding.ActivityMainBinding
 import com.example.adsensedashboard.ui.data.DashboardActivity
-import com.example.adsensedashboard.utils.EMAIL
-import com.example.adsensedashboard.utils.SOURCE
-import com.example.adsensedashboard.utils.USER
 import com.example.adsensedashboard.utils.toast
 import com.example.adsensedashboard.viewModels.AuthViewModel
 import com.example.adsensedashboard.viewModels.AuthViewModelFactory
@@ -60,18 +57,15 @@ class MainActivity : AppCompatActivity() {
                 Log.d(TAG, "onCreate: NULL User Data")
                 return@observe
             }
-            moveToDashboard(user)
+            Intent(this, DashboardActivity::class.java)
+                .apply { startActivity(this) }
+
         }
     }
 
 
     private fun moveToDashboard(user: FirebaseUser) {
-        Intent(this, DashboardActivity::class.java).apply {
-            putExtra(SOURCE, TAG)
-            putExtra(USER, user.displayName)
-            putExtra(EMAIL, user.email)
-            startActivity(this)
-        }
+
     }
 
     private fun authenticateWithGoogle() {
