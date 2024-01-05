@@ -35,7 +35,6 @@ class AuthViewModel(
 
     override fun onCreate(owner: LifecycleOwner) {
         super.onCreate(owner)
-
         getContent = registry.register(
             "key", owner,
             ActivityResultContracts.StartActivityForResult()

@@ -8,18 +8,18 @@ import androidx.lifecycle.ViewModelProvider
 import com.example.adsensedashboard.R
 import com.example.adsensedashboard.databinding.ActivityMainBinding
 import com.example.adsensedashboard.ui.data.DashboardActivity
-import com.example.adsensedashboard.utils.EMAIL
-import com.example.adsensedashboard.utils.SOURCE
-import com.example.adsensedashboard.utils.USER
 import com.example.adsensedashboard.utils.toast
 import com.example.adsensedashboard.viewModels.AuthViewModel
 import com.example.adsensedashboard.viewModels.AuthViewModelFactory
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
+import com.google.android.gms.common.api.Scope
 import com.google.firebase.Firebase
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.auth
+
 
 class MainActivity : AppCompatActivity() {
     private val TAG = "MainActivity"
@@ -57,19 +57,22 @@ class MainActivity : AppCompatActivity() {
                 Log.d(TAG, "onCreate: NULL User Data")
                 return@observe
             }
-            Intent(this, DashboardActivity::class.java).apply {
-                putExtra(SOURCE, TAG)
-                putExtra(USER, user.displayName)
-                putExtra(EMAIL, user.email)
-                startActivity(this)
-            }
+            Intent(this, DashboardActivity::class.java)
+                .apply { startActivity(this) }
+
         }
+    }
+
+
+    private fun moveToDashboard(user: FirebaseUser) {
+
     }
 
     private fun authenticateWithGoogle() {
         mAuth = Firebase.auth
         val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
             .requestIdToken(getString(R.string.default_web_client_id))
+            .requestScopes(Scope("https://www.googleapis.com/auth/adsense.readonly"))
             .requestEmail()
             .build()
 
