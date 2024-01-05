@@ -1,6 +1,9 @@
 <resources>
     <string name="app_name">AdSense Dashboard</string>
     <string name="default_web_client_id">96223932976-5bdlj6hvaf777c3ltb2al54n3s0ajr0q.apps.googleusercontent.com</string>
+    <string name="default_app_client_id">96223932976-9tlesjhrgvh9vcbcj48cdd2sb010urd8.apps.googleusercontent.com</string>
     <string name="sign_out">Sign Out</string>
     <string name="dashboard_activity">Dashboard Activity</string>
+    <string name="MY_API_KEY">AIzaSyBgT-2o_72OSfGjgtBSD5WGfF_T6TkYS3U</string>
+    <string name="ADSENSE_AUTH_SCOPE">https://www.googleapis.com/auth/adsense</string>
 </resources>

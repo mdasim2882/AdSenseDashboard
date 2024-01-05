@@ -20,7 +20,9 @@ import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.android.gms.common.api.Scope
 import com.google.firebase.Firebase
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.auth
+
 
 class MainActivity : AppCompatActivity() {
     private val TAG = "MainActivity"
@@ -58,12 +60,17 @@ class MainActivity : AppCompatActivity() {
                 Log.d(TAG, "onCreate: NULL User Data")
                 return@observe
             }
-            Intent(this, DashboardActivity::class.java).apply {
-                putExtra(SOURCE, TAG)
-                putExtra(USER, user.displayName)
-                putExtra(EMAIL, user.email)
-                startActivity(this)
-            }
+            moveToDashboard(user)
+        }
+    }
+
+
+    private fun moveToDashboard(user: FirebaseUser) {
+        Intent(this, DashboardActivity::class.java).apply {
+            putExtra(SOURCE, TAG)
+            putExtra(USER, user.displayName)
+            putExtra(EMAIL, user.email)
+            startActivity(this)
         }
     }
 
