@@ -80,7 +80,7 @@ class PlaceholderFragment : Fragment() {
         }
 
         /** Global instance of the JSON factory.  */
-        private val JSON_FACTORY: JsonFactory = GsonFactory.getDefaultInstance();
+        private val JSON_FACTORY: JsonFactory = GsonFactory.getDefaultInstance()
         fun initializeAdsense(context: Context): Adsense? {
             val currentAccount = GoogleSignIn.getLastSignedInAccount(context)
             currentAccount?.let { signin ->

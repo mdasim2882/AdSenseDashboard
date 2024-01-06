@@ -10,6 +10,7 @@ import com.example.adsensedashboard.ui.data.consoleUI.main.PlaceholderFragment
 import com.example.adsensedashboard.utils.api.GetAllAccounts.run
 import com.example.adsensedashboard.utils.toast
 import com.google.api.services.adsense.v2.model.Account
+import kotlinx.coroutines.DelicateCoroutinesApi
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 
@@ -20,6 +21,8 @@ class PageViewModel(app: Application) : AndroidViewModel(app) {
     private val appContext = app
     private val _index = MutableLiveData<Int>()
     val response = MutableLiveData("DATA")
+
+    @OptIn(DelicateCoroutinesApi::class)
     val text: LiveData<String> = _index.map {
         appContext.toast("index: $it")
         when (it) {
@@ -34,7 +37,7 @@ class PageViewModel(app: Application) : AndroidViewModel(app) {
     }
 
 
-    fun callAPIusingClientLibrary(i: @JvmSuppressWildcards Int) {
+    private fun callAPIusingClientLibrary(i: @JvmSuppressWildcards Int) {
         Log.d(TAG, "callAPIusingClientLibrary: =============CALLED===========\n")
         val adsense = PlaceholderFragment.initializeAdsense(appContext)
         val accounts: List<Account> = run(adsense!!, MAX_LIST_PAGE_SIZE)
