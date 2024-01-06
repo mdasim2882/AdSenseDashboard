@@ -7,7 +7,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import com.example.adsensedashboard.R
 import com.example.adsensedashboard.databinding.ActivityMainBinding
-import com.example.adsensedashboard.ui.data.DashboardActivity
+import com.example.adsensedashboard.ui.data.ConsoleActivity
 import com.example.adsensedashboard.utils.toast
 import com.example.adsensedashboard.viewModels.AuthViewModel
 import com.example.adsensedashboard.viewModels.AuthViewModelFactory
@@ -52,12 +52,12 @@ class MainActivity : AppCompatActivity() {
 
         lifecycle.addObserver(viewModel)
         viewModel.userLiveData.observe(this) { user ->
-            Log.d(TAG, "onCreate: Calling DashboardActivity...from Observer")
+            Log.d(TAG, "onCreate: Calling ConsoleActivity...from Observer")
             if (user == null) {
                 Log.d(TAG, "onCreate: NULL User Data")
                 return@observe
             }
-            Intent(this, DashboardActivity::class.java)
+            Intent(this, ConsoleActivity::class.java)
                 .apply { startActivity(this) }
 
         }

@@ -52,6 +52,7 @@ dependencies {
     implementation("androidx.appcompat:appcompat:1.6.1")
     implementation("com.google.android.material:material:1.11.0")
     implementation("androidx.constraintlayout:constraintlayout:2.1.4")
+    implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.6.2")
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
@@ -76,5 +77,5 @@ dependencies {
     // Dependencies for the REST API example
     implementation("com.google.api-client:google-api-client:1.31.1")
     implementation("com.google.api-client:google-api-client-android:1.30.5")
-//    implementation("com.google.apis:google-api-services-adsense:v2-rev20210414-1.31.0")
+    implementation("com.google.apis:google-api-services-adsense:v2-rev20231016-2.0.0")
 }
