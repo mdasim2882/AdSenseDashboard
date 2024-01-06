@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "96223932976",
+    "project_id": "adsense-dashboard-756c5",
+    "storage_bucket": "adsense-dashboard-756c5.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:96223932976:android:5e2320b79666202dbf73f5",
+        "android_client_info": {
+          "package_name": "com.example.adsensedashboard"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "96223932976-9tlesjhrgvh9vcbcj48cdd2sb010urd8.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.adsensedashboard",
+            "certificate_hash": "42b331a70b8e5ecfafb0a9518fa0e6d9cd1d8f76"
+          }
+        },
+        {
+          "client_id": "96223932976-5bdlj6hvaf777c3ltb2al54n3s0ajr0q.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBgT-2o_72OSfGjgtBSD5WGfF_T6TkYS3U"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "96223932976-5bdlj6hvaf777c3ltb2al54n3s0ajr0q.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
