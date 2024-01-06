@@ -32,7 +32,7 @@ class PlaceholderFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
 
         _binding = FragmentConsoleBinding.inflate(inflater, container, false)
         val root = binding.root

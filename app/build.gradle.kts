@@ -75,7 +75,7 @@ dependencies {
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.3")
 
     // Dependencies for the REST API example
-    implementation("com.google.api-client:google-api-client:1.31.1")
+    implementation("com.google.api-client:google-api-client:2.2.0")
     implementation("com.google.api-client:google-api-client-android:1.30.5")
     implementation("com.google.apis:google-api-services-adsense:v2-rev20231016-2.0.0")
 }
