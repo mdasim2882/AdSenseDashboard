@@ -77,7 +77,7 @@ object GenerateReport {
                     System.out.printf("%25s", cell.value)
                     reportResponse += String.format("%25s", cell.value)
                 }
-                reportResponse += "\n";
+                reportResponse += "\n"
                 println()
             }
 
@@ -88,7 +88,6 @@ object GenerateReport {
             println("No rows returned.")
             return "No rows returned."
         }
-        println()
     }
 
     /**
