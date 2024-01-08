@@ -34,7 +34,7 @@ object GenerateReport {
      * @throws Exception
      */
     @Throws(Exception::class)
-    fun run(adsense: Adsense, accountId: String?, adClientId: String) {
+    fun run(adsense: Adsense, accountId: String?, adClientId: String): String {
         println("=================================================================")
         System.out.printf("Running report for ad client %s\n", adClientId)
         println("=================================================================")
@@ -71,15 +71,22 @@ object GenerateReport {
             println()
 
             // Display results.
+            var reportResponse = ""
             for (row in rows) {
                 for (cell in row.cells) {
                     System.out.printf("%25s", cell.value)
+                    reportResponse += String.format("%25s", cell.value)
                 }
+                reportResponse += "\n";
                 println()
             }
+
             println()
+            return reportResponse
         } else {
+
             println("No rows returned.")
+            return "No rows returned."
         }
         println()
     }
