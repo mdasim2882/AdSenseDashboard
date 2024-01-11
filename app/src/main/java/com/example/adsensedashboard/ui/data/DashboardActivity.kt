@@ -21,12 +21,6 @@ import com.google.gson.Gson
 import kotlinx.coroutines.DelicateCoroutinesApi
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
-import okhttp3.Call
-import okhttp3.Callback
-import okhttp3.OkHttpClient
-import okhttp3.Request
-import okhttp3.Response
-import java.io.IOException
 
 class DashboardActivity : AppCompatActivity() {
     private val TAG = "DashboardActivity"
@@ -86,6 +80,7 @@ class DashboardActivity : AppCompatActivity() {
                 Log.d(TAG, "onCreate: NULL Response")
                 return@observe
             }
+            // TODO: Try to use the accountId from here and then call getPayments()
             updateUI(it)
         }
         viewModel.responsePaymentsAPI.observe(this) {
@@ -98,61 +93,12 @@ class DashboardActivity : AppCompatActivity() {
         }
     }
 
-    private inline fun <reified T> updateUIthroughInline(responseAdSenseAPI: T) {
-        val JSON_DATA = Gson().toJson(responseAdSenseAPI)
-        binding.sampleApiRespnse.text = JSON_DATA
-        Log.d(TAG, "updateUI: RESPONSE ON DASHBOARD UI= $JSON_DATA")
-    }
 
     private fun <T> updateUI(responseAdSenseAPI: T) {
         Log.d(TAG, "updateUI: Called with ${responseAdSenseAPI.toString()}")
         val JSON_DATA = Gson().toJson(responseAdSenseAPI)
         binding.sampleApiRespnse.text = JSON_DATA
         Log.d(TAG, "updateUI: RESPONSE ON DASHBOARD UI= $JSON_DATA")
-    }
-
-    @OptIn(DelicateCoroutinesApi::class)
-    private fun callAPIusingOkHttpClient() {
-        GlobalScope.launch {
-
-            val currentAccount = GoogleSignIn.getLastSignedInAccount(this@DashboardActivity)
-            currentAccount?.let { signin ->
-                val CREDENTIAL = GoogleAccountCredential.usingOAuth2(
-                    this@DashboardActivity,
-                    listOf("https://www.googleapis.com/auth/adsense.readonly")
-                ).setSelectedAccount(signin.account)
-
-                val TOKEN = CREDENTIAL.token
-                Log.d(TAG, "OkHttp makeAPICall: ACCESS TOKEN : $TOKEN")
-                try {
-                    val CLIENT = OkHttpClient()
-                    val REQUEST = Request
-                        .Builder()
-                        .url("https://adsense.googleapis.com/v2/accounts")
-                        .addHeader("Authorization", "Bearer ${TOKEN}")
-                        .addHeader("Accept", "application/json").get().build()
-
-                    //region HANDLING OkHttpClient Response
-                    CLIENT.newCall(REQUEST).enqueue(object : Callback {
-                        override fun onFailure(call: Call, e: IOException) {
-                            TODO("onFailure() OkHttpClient not yet implemented")
-                            e.printStackTrace()
-                        }
-
-                        override fun onResponse(call: Call, response: Response) {
-                            Log.d(
-                                TAG,
-                                "OkHttp onResponse : RESPONSE = ${response.body()?.string()}"
-                            )
-                        }
-                    })
-                    //endregion
-
-                } catch (e: Exception) {
-                    TODO("Handle OkHttpException here ")
-                }
-            }
-        }
     }
 
 
