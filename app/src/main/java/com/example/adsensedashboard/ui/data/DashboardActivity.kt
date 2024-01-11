@@ -7,7 +7,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import com.example.adsensedashboard.R
 import com.example.adsensedashboard.databinding.ActivityDashboardBinding
-import com.example.adsensedashboard.models.ResponseAdSenseAPI
+import com.example.adsensedashboard.utils.JSON_FORMAT
 import com.example.adsensedashboard.utils.toast
 import com.example.adsensedashboard.viewModels.DashboardViewModel
 import com.example.adsensedashboard.viewModels.DashboardViewModelFactory
@@ -74,6 +74,12 @@ class DashboardActivity : AppCompatActivity() {
         ).get(DashboardViewModel::class.java)
 
         lifecycle.addObserver(viewModel)
+        //region ViewModel Observers
+        setupObservers()
+        //endregion
+    }
+
+    private fun setupObservers() {
         viewModel.response.observe(this) {
             Log.d(TAG, "onCreate: Fetching Response...from Observer")
             if (it == null) {
@@ -82,9 +88,24 @@ class DashboardActivity : AppCompatActivity() {
             }
             updateUI(it)
         }
+        viewModel.responsePaymentsAPI.observe(this) {
+            Log.d(TAG, "onCreate: Fetching responsePaymentsAPI Response...from Observer")
+            if (it == null) {
+                Log.d(TAG, "onCreate: NULL Response")
+                return@observe
+            }
+            updateUI(it)
+        }
     }
 
-    private fun updateUI(responseAdSenseAPI: ResponseAdSenseAPI) {
+    private inline fun <reified T> updateUIthroughInline(responseAdSenseAPI: T) {
+        val JSON_DATA = Gson().toJson(responseAdSenseAPI)
+        binding.sampleApiRespnse.text = JSON_DATA
+        Log.d(TAG, "updateUI: RESPONSE ON DASHBOARD UI= $JSON_DATA")
+    }
+
+    private fun <T> updateUI(responseAdSenseAPI: T) {
+        Log.d(TAG, "updateUI: Called with ${responseAdSenseAPI.toString()}")
         val JSON_DATA = Gson().toJson(responseAdSenseAPI)
         binding.sampleApiRespnse.text = JSON_DATA
         Log.d(TAG, "updateUI: RESPONSE ON DASHBOARD UI= $JSON_DATA")
@@ -135,11 +156,24 @@ class DashboardActivity : AppCompatActivity() {
     }
 
 
+    @OptIn(DelicateCoroutinesApi::class)
     private fun makeAPICall() {
         GlobalScope.launch {
             val token = generateAccessToken()
             Log.d(TAG, "makeAPICall: ACCESS TOKEN : ${token}")
-            token?.let { viewModel.getAccount("Bearer ${token}", "application/json") }
+            token?.let {
+                val account = viewModel.getAccount("Bearer ${token}", JSON_FORMAT)
+                account?.let {
+                    val payments = viewModel.getPayments(
+//                        account.accounts[0].name,
+                        "pub-7890024740593023",
+                        "Bearer ${token}",
+                        JSON_FORMAT
+                    )
+
+                }
+            }
+
         }
     }
 
@@ -157,7 +191,8 @@ class DashboardActivity : AppCompatActivity() {
                 token = credential.token
             }
         } catch (e: Exception) {
-            TODO("Handle the AdSenseAPI Retrofit response exception")
+            // TODO("Handle the AdSenseAPI Retrofit response exception")
+            toast("Network issue")
         }
         return token
     }

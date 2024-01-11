@@ -1,4 +1,4 @@
-package com.example.adsensedashboard.models
+package com.example.adsensedashboard.models.api
 
 
 data class ResponseAdSenseAPI(
