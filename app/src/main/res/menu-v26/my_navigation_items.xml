@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/action_earnings"
+        android:title="@string/menu_earnings"
+        android:icon="@drawable/baseline_currency_rupee" />
+
+    <item
+        android:id="@+id/action_payments"
+        android:title="@string/menu_payments"
+        android:icon="@drawable/baseline_account_balance_wallet"
+        android:iconTint="@color/black" />
+    <item
+        android:id="@+id/action_settings"
+        android:title="@string/menu_settings"
+        android:icon="@drawable/sharp_ac_unit"
+        android:iconTint="@color/black" />
+
+</menu>

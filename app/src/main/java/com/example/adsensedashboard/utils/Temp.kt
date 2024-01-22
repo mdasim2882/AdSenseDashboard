@@ -1,4 +1,4 @@
-package com.example.adsensedashboard.ui.data
+package com.example.adsensedashboard.utils
 
 import com.google.gson.Gson
 
