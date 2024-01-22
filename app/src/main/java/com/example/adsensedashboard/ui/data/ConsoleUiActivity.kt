@@ -8,6 +8,7 @@ import androidx.fragment.app.Fragment
 import com.example.adsensedashboard.R
 import com.example.adsensedashboard.databinding.ActivityConsoleUiBinding
 import com.example.adsensedashboard.ui.fragments.EarningsFragment
+import com.example.adsensedashboard.ui.fragments.PaymentsFragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 
@@ -33,12 +34,16 @@ class ConsoleUiActivity : AppCompatActivity() {
         binding.navigation.setOnItemSelectedListener {
             when (it.itemId) {
 
-                R.id.action_payments -> loadFromFragment(EarningsFragment())
+                R.id.action_earnings -> loadFromFragment(EarningsFragment())
+                R.id.action_payments -> loadFromFragment(PaymentsFragment())
+                R.id.action_settings -> loadFromFragment(EarningsFragment())
                 else -> loadFromFragment(null)
             }
         }
         binding.navigation.setOnItemReselectedListener { true }
-
+        if (COMING_FROM == null) {
+            bottomNavigationView.setSelectedItemId(R.id.action_earnings);
+        }
     }
 
     private fun loadFromFragment(fragment: Fragment?): Boolean {
@@ -53,6 +58,18 @@ class ConsoleUiActivity : AppCompatActivity() {
             return true
         }
         return false
+    }
+
+    override fun onBackPressed() {
+        if (FRAGMENT_STATUS > 0) {
+            val fragment: Fragment = EarningsFragment()
+            loadFromFragment(fragment)
+            bottomNavigationView.selectedItemId = R.id.action_earnings
+            FRAGMENT_STATUS = 0
+            bottomNavigationView.visibility = View.VISIBLE
+        } else {
+            super.onBackPressed()
+        }
     }
 
 
