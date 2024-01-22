@@ -1,4 +1,4 @@
-<resources xmlns:tools="http://schemas.android.com/tools">
+<resources>
     <!-- Base application theme. -->
     <style name="Base.Theme.AdSenseDashboard" parent="Theme.Material3.DayNight.NoActionBar">
         <!-- Customize your light theme here. -->
@@ -6,4 +6,21 @@
     </style>
 
     <style name="Theme.AdSenseDashboard" parent="Base.Theme.AdSenseDashboard" />
+
+    <style name="BottomNavigation.InactiveItemTextAppearance" parent="TextAppearance.AppCompat">
+        <item name="android:textSize">12sp</item>
+        <item name="android:fontFamily">@font/mclaren</item>
+    </style>
+
+    <style name="BottomNavigation.ActiveItemTextAppearance" parent="TextAppearance.AppCompat">
+        <item name="android:textSize">15sp</item>
+        <item name="android:fontFamily">@font/mclaren</item>
+    </style>
+
+    <style name="AppLayoutGrowFast.ActiveItemTextAppearance" parent="TextAppearance.AppCompat">
+        <item name="android:textSize">18sp</item>
+        <item name="android:fontFamily">@font/mclaren</item>
+    </style>
+
+
 </resources>

@@ -6,4 +6,7 @@
     <string name="dashboard_activity">Dashboard Activity</string>
     <string name="MY_API_KEY">AIzaSyBgT-2o_72OSfGjgtBSD5WGfF_T6TkYS3U</string>
     <string name="ADSENSE_AUTH_SCOPE">https://www.googleapis.com/auth/adsense</string>
+    <string name="menu_earnings">Earnings</string>
+    <string name="menu_payments">Payments</string>
+    <string name="menu_settings">Settings</string>
 </resources>
