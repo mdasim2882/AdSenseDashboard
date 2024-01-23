@@ -2,6 +2,7 @@ package com.example.adsensedashboard.ui.data
 
 
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
@@ -11,13 +12,14 @@ import com.example.adsensedashboard.ui.fragments.EarningsFragment
 import com.example.adsensedashboard.ui.fragments.PaymentsFragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
+private const val TAG = "ConsoleUiActivity"
 
 class ConsoleUiActivity : AppCompatActivity() {
 
     var FRAGMENT_STATUS = 0
     var COMING_FROM = null
     private lateinit var binding: ActivityConsoleUiBinding
-    val bottomNavigationView: BottomNavigationView by lazy {
+    private val bottomNavigationView: BottomNavigationView by lazy {
         findViewById(R.id.navigation)
     }
 
@@ -30,8 +32,10 @@ class ConsoleUiActivity : AppCompatActivity() {
     }
 
     private fun setBottomNavigationMenu() {
-        bottomNavigationView.visibility = View.VISIBLE
+        binding.navigation.visibility = View.VISIBLE
+        binding.navigation.selectedItemId = 0
         binding.navigation.setOnItemSelectedListener {
+            Log.d(TAG, "setBottomNavigationMenu: Setting Fragment")
             when (it.itemId) {
 
                 R.id.action_earnings -> loadFromFragment(EarningsFragment())
@@ -41,9 +45,15 @@ class ConsoleUiActivity : AppCompatActivity() {
             }
         }
         binding.navigation.setOnItemReselectedListener { true }
-        if (COMING_FROM == null) {
-            bottomNavigationView.setSelectedItemId(R.id.action_earnings);
-        }
+
+        Log.d(TAG, "setBottomNavigationMenu: ${binding.navigation.selectedItemId}")
+        // TODO: SelectedItemId not working on startup
+        binding.navigation.selectedItemId = R.id.action_earnings
+    }
+
+    override fun onResume() {
+        super.onResume()
+
     }
 
     private fun loadFromFragment(fragment: Fragment?): Boolean {

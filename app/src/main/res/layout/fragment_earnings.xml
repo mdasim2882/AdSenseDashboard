@@ -10,6 +10,7 @@
         android:id="@+id/appBarLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:gravity="center"
         android:background="@color/red"
         android:elevation="4dp">
 
@@ -18,103 +19,44 @@
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             android:layout_marginStart="10dp"
+            android:gravity="center"
             android:layout_marginLeft="10dp"
-            android:textAlignment="center"
-            app:navigationIcon="@drawable/baseline_arrow_back_ios_24"
+            android:textAlignment="gravity"
+            android:layout_gravity="center"
+            android:foregroundGravity="center"
             app:title="Earnings"
-            app:titleTextAppearance="@style/AppLayoutGrowFast.ActiveItemTextAppearance"
+            app:titleTextAppearance="@style/AppLayoutAdsenseDashboard.ActiveItemTextAppearance"
             app:titleTextColor="@color/white" />
     </com.google.android.material.appbar.AppBarLayout>
 
-    <RelativeLayout
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="56dp"
-        android:elevation="8dp"
-        android:paddingStart="@dimen/cardview_default_elevation"
+        android:layout_above="@id/cartTotal_details_box"
+        android:background="@drawable/bg"
         android:paddingTop="5dp"
-        android:paddingEnd="@dimen/cardview_default_elevation">
+        android:orientation="vertical"
+        android:layout_below="@id/appBarLayout">
 
-        <LinearLayout
+        <TextView
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginTop="15dp"
-            android:orientation="vertical">
+            android:layout_height="wrap_content"
+            android:background="@drawable/textlines"
+            android:fontFamily="@font/mclaren"
+            android:padding="5dp"
+            android:text="Summary"
+            android:textAlignment="center"
+            android:textAllCaps="true"
+            android:textColor="@color/dark_skyblue"
+            android:textSize="18sp"
+            android:textStyle="bold" />
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:fontFamily="sans-serif-smallcaps"
-                android:text="Call Us"
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/earningItemsRecyclerView"
+            android:layout_width="match_parent"
+            android:layoutAnimation="@anim/layout_animation"
+            android:layout_height="match_parent" />
 
-                android:textAlignment="center"
-                android:textColor="@color/black"
-                android:textSize="20sp"
-                android:textStyle="bold" />
-
-            <TextView
-                android:id="@+id/contactNo"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:clickable="true"
-                android:fontFamily="sans-serif-smallcaps"
-                android:text="+91 9580130679"
-                android:textAlignment="center"
-                android:textColor="@color/red"
-                android:textSize="15sp" />
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="15dp"
-                android:fontFamily="sans-serif-smallcaps"
-                android:text="Email Id"
-                android:textAlignment="center"
-                android:textColor="@color/black"
-                android:textSize="20sp"
-                android:textStyle="bold" />
-
-            <TextView
-                android:id="@+id/supportEmail"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:clickable="true"
-                android:text="ourwebsitestuff@gmail.com"
-                android:textAlignment="center"
-                android:textColor="@color/red"
-                android:textSize="15sp" />
-
-            <TextView
-                android:id="@+id/descriptiondesk"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="5dp"
-                android:layout_marginTop="12dp"
-                android:layout_marginRight="5dp"
-                android:clickable="true"
-                android:text="@string/helpdeskDescription"
-                android:textAlignment="center"
-                android:textColor="#6A6767"
-                android:textSize="15sp" />
-
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_gravity="bottom"
-                android:layout_marginTop="10dp">
-
-                <com.google.android.material.button.MaterialButton
-                    android:id="@+id/buyNowbtn"
-                    android:layout_width="300dp"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentBottom="true"
-                    android:layout_centerHorizontal="true"
-                    android:layout_marginBottom="200dp"
-                    android:text="SUGGEST NOW" />
-
-            </RelativeLayout>
-
-        </LinearLayout>
-    </RelativeLayout>
+    </LinearLayout>
 </RelativeLayout>
 

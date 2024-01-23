@@ -25,6 +25,7 @@
         app1:itemIconSize="28dp"
         app1:itemTextAppearanceActiveBoldEnabled="false"
         app1:itemIconTint="@color/red"
+        android:fitsSystemWindows="true"
         app1:labelVisibilityMode="labeled"
         app1:itemTextAppearanceActive="@style/BottomNavigation.ActiveItemTextAppearance"
         app1:itemTextAppearanceInactive="@style/BottomNavigation.InactiveItemTextAppearance"

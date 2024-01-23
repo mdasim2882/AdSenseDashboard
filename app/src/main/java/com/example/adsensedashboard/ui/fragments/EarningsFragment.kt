@@ -1,11 +1,15 @@
 package com.example.adsensedashboard.ui.fragments
 
+import android.R
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import com.example.adsensedashboard.R
+import androidx.recyclerview.widget.GridLayoutManager
+import com.example.adsensedashboard.databinding.FragmentEarningsBinding
+import com.example.adsensedashboard.ui.recyclerView.adapter.EarningsRecyclerViewAdapter
+
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -21,7 +25,8 @@ class EarningsFragment : Fragment() {
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
-
+    private lateinit var binding: FragmentEarningsBinding
+    private val recyclerView = binding.earningItemsRecyclerView
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
@@ -35,7 +40,10 @@ class EarningsFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_earnings, container, false)
+        binding = FragmentEarningsBinding.inflate(inflater, container, false)
+        val view = binding.root
+        setRecyclerView()
+        return view
     }
 
     companion object {
@@ -56,5 +64,31 @@ class EarningsFragment : Fragment() {
                     putString(ARG_PARAM2, param2)
                 }
             }
+    }
+
+
+    private fun setRecyclerView() {
+
+        // Set up the RecyclerView
+
+        // Set up the RecyclerView
+        recyclerView.setHasFixedSize(true)
+        recyclerView.layoutManager =
+            GridLayoutManager(activity, 1, GridLayoutManager.VERTICAL, false)
+        /*
+         * Pass parameter as list of type ProductEntry
+         * Must be retrieved from database to here only
+         * ProductEntry contains three fields:
+         * ImageView productImage
+         * TextView productName, productCost;
+         * */
+    }
+
+    fun onCartItemsLoadSuccess(templates: List<String>) {
+        val adapter = EarningsRecyclerViewAdapter(requireContext(), templates)
+        recyclerView.adapter = adapter
+        val largePadding = resources.getDimensionPixelSize(R.dimen.)
+        val smallPadding = resources.getDimensionPixelSize(R.dimen.side_product_grid_spacing_small)
+        recyclerView.addItemDecoration(ProductGridItemDecoration(largePadding, smallPadding))
     }
 }
