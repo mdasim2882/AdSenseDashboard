@@ -1,14 +1,17 @@
 package com.example.adsensedashboard.ui.fragments
 
-import android.R
+
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import com.example.adsensedashboard.R
 import com.example.adsensedashboard.databinding.FragmentEarningsBinding
 import com.example.adsensedashboard.ui.recyclerView.adapter.EarningsRecyclerViewAdapter
+import com.example.adsensedashboard.ui.recyclerView.animations.ProductGridItemDecoration
 
 
 // TODO: Rename parameter arguments, choose names that match
@@ -26,7 +29,7 @@ class EarningsFragment : Fragment() {
     private var param1: String? = null
     private var param2: String? = null
     private lateinit var binding: FragmentEarningsBinding
-    private val recyclerView = binding.earningItemsRecyclerView
+    private lateinit var recyclerView: RecyclerView
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
@@ -42,6 +45,7 @@ class EarningsFragment : Fragment() {
         // Inflate the layout for this fragment
         binding = FragmentEarningsBinding.inflate(inflater, container, false)
         val view = binding.root
+        recyclerView = binding.earningItemsRecyclerView
         setRecyclerView()
         return view
     }
@@ -74,7 +78,7 @@ class EarningsFragment : Fragment() {
         // Set up the RecyclerView
         recyclerView.setHasFixedSize(true)
         recyclerView.layoutManager =
-            GridLayoutManager(activity, 1, GridLayoutManager.VERTICAL, false)
+            GridLayoutManager(activity, 1, GridLayoutManager.HORIZONTAL, false)
         /*
          * Pass parameter as list of type ProductEntry
          * Must be retrieved from database to here only
@@ -82,12 +86,14 @@ class EarningsFragment : Fragment() {
          * ImageView productImage
          * TextView productName, productCost;
          * */
+        val earningsData = listOf("256.07 $", "2308.46 $", "9008.83 $")
+        onEarningsLoadSuccess(earningsData)
     }
 
-    fun onCartItemsLoadSuccess(templates: List<String>) {
+    fun onEarningsLoadSuccess(templates: List<String>) {
         val adapter = EarningsRecyclerViewAdapter(requireContext(), templates)
         recyclerView.adapter = adapter
-        val largePadding = resources.getDimensionPixelSize(R.dimen.)
+        val largePadding = resources.getDimensionPixelSize(R.dimen.updown_product_grid_spacing)
         val smallPadding = resources.getDimensionPixelSize(R.dimen.side_product_grid_spacing_small)
         recyclerView.addItemDecoration(ProductGridItemDecoration(largePadding, smallPadding))
     }

@@ -32,8 +32,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_above="@id/cartTotal_details_box"
-        android:background="@drawable/bg"
+
         android:paddingTop="5dp"
         android:orientation="vertical"
         android:layout_below="@id/appBarLayout">
@@ -41,13 +40,12 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/textlines"
             android:fontFamily="@font/mclaren"
             android:padding="5dp"
             android:text="Summary"
             android:textAlignment="center"
             android:textAllCaps="true"
-            android:textColor="@color/dark_skyblue"
+            android:textColor="@color/light_blue_900"
             android:textSize="18sp"
             android:textStyle="bold" />
 
