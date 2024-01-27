@@ -11,7 +11,7 @@ class EarningsViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 //        TODO: Handle card click and data setup here
         when (pos) {
             0 -> {
-                binding.priceTitle.text = getTitle("Daily")
+                binding.priceTitle.text = getTitle("Today's")
                 binding.price.text = price
             }
 

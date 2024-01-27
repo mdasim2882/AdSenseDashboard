@@ -78,7 +78,7 @@ class EarningsFragment : Fragment() {
         // Set up the RecyclerView
         recyclerView.setHasFixedSize(true)
         recyclerView.layoutManager =
-            GridLayoutManager(activity, 1, GridLayoutManager.HORIZONTAL, false)
+            GridLayoutManager(activity, 2, GridLayoutManager.VERTICAL, false)
         /*
          * Pass parameter as list of type ProductEntry
          * Must be retrieved from database to here only
