@@ -11,17 +11,22 @@ class EarningsViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 //        TODO: Handle card click and data setup here
         when (pos) {
             0 -> {
-                binding.priceTitle.text = getTitle("Today's")
+                binding.priceTitle.text = getTitle("Today's so far")
                 binding.price.text = price
             }
 
             1 -> {
-                binding.priceTitle.text = getTitle("Weekly")
+                binding.priceTitle.text = getTitle("Yesterday")
                 binding.price.text = price
             }
 
             2 -> {
-                binding.priceTitle.text = getTitle("Monthly")
+                binding.priceTitle.text = getTitle("Last 7 days")
+                binding.price.text = price
+            }
+
+            3 -> {
+                binding.priceTitle.text = getTitle("This Month")
                 binding.price.text = price
             }
 
@@ -36,7 +41,7 @@ class EarningsViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         }
     }
 
-    private fun getTitle(earningType: String): String = "${earningType} Earnings( $ )"
+    private fun getTitle(earningType: String): String = "${earningType}( $ )"
 
 
 }

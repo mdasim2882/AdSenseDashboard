@@ -78,7 +78,7 @@ class EarningsFragment : Fragment() {
         // Set up the RecyclerView
         recyclerView.setHasFixedSize(true)
         recyclerView.layoutManager =
-            GridLayoutManager(activity, 1, GridLayoutManager.VERTICAL, false)
+            GridLayoutManager(activity, 2, GridLayoutManager.VERTICAL, false)
         /*
          * Pass parameter as list of type ProductEntry
          * Must be retrieved from database to here only
@@ -86,7 +86,7 @@ class EarningsFragment : Fragment() {
          * ImageView productImage
          * TextView productName, productCost;
          * */
-        val earningsData = listOf("256.07 $", "2308.46 $", "9008.83 $")
+        val earningsData = listOf("13.56 $", "256.07 $", "2308.46 $", "9008.83 $")
         onEarningsLoadSuccess(earningsData)
     }
 
