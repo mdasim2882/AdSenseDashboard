@@ -14,6 +14,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.adsensedashboard.R
 import com.example.adsensedashboard.databinding.FragmentEarningsBinding
 import com.example.adsensedashboard.ui.recyclerView.adapter.EarningsRecyclerViewAdapter
+import com.example.adsensedashboard.ui.recyclerView.adapter.Sites
+import com.example.adsensedashboard.ui.recyclerView.adapter.SitesListViewAdapter
 import com.example.adsensedashboard.ui.recyclerView.animations.ProductGridItemDecoration
 
 
@@ -95,16 +97,23 @@ class EarningsFragment : Fragment() {
 
         // use arrayadapter and define an array
         val arrayAdapter: ArrayAdapter<*>
-        val users = arrayOf(
-            "www.google.com", "www.wikipedia.org", "www.amazon.com",
-            "www.stackoverflow.com", "www.cisce.org"
+        val users = listOf<Sites>(
+            Sites("www.google.com", "$ 3.86", pageView = "6", clicksCount = "20"),
+            Sites("www.stackoverflow.com", "$ 4.57", pageView = "7", clicksCount = "16"),
+            Sites("www.cisce.org", "$ 3.25", pageView = "13", clicksCount = "9"),
+            Sites("www.wikipedia.org", "$ 13.34", pageView = "17", clicksCount = "14"),
+            Sites("www.geeksforgeeks.org", "$ 4.56", pageView = "26", clicksCount = "34"),
+            Sites("www.cloudskillsboost.google", "$ 6.44", pageView = "89", clicksCount = "56"),
+            Sites("www.cisce.org", "$ 3.25", pageView = "13", clicksCount = "9"),
+            Sites("www.wikipedia.org", "$ 13.34", pageView = "17", clicksCount = "14"),
+            Sites("www.geeksforgeeks.org", "$ 4.56", pageView = "26", clicksCount = "34"),
+            Sites("www.cloudskillsboost.google", "$ 6.44", pageView = "89", clicksCount = "56"),
         )
 
         // access the listView from xml file
         var mListView = binding.sitesLayout.userlist
-        arrayAdapter = ArrayAdapter(
-            requireActivity(),
-            android.R.layout.simple_list_item_1, users
+        arrayAdapter = SitesListViewAdapter(
+            requireActivity(), users
         )
         mListView.adapter = arrayAdapter
         mListView.setOnTouchListener({ v, event ->
@@ -129,7 +138,5 @@ class EarningsFragment : Fragment() {
         val largePadding = resources.getDimensionPixelSize(R.dimen.updown_product_grid_spacing)
         val smallPadding = resources.getDimensionPixelSize(R.dimen.side_product_grid_spacing_small)
         recyclerView.addItemDecoration(ProductGridItemDecoration(largePadding, smallPadding))
-
-
     }
 }
