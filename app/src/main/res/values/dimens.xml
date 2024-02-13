@@ -9,4 +9,6 @@
     <dimen name="spacing_bottom">12dp</dimen>
     <dimen name="updown_product_grid_spacing">5dp</dimen>
     <dimen name="side_product_grid_spacing_small">3.2dp</dimen>
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
 </resources>

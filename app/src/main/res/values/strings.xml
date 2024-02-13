@@ -14,4 +14,6 @@
     <string name="dummy_button">Redeem Now</string>
     <string name="dummy_content">PAYMENTS\nREPORT</string>
     <string name="helpdeskDescription">To suggest any feature,\nplease contact on the above email...</string>
+    <string name="tab_text_2">TAB 2</string>
+    <string name="tab_text_1">TAB 1</string>
 </resources>

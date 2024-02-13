@@ -8,15 +8,19 @@ import android.view.MotionEvent
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
+import android.widget.ListView
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import androidx.viewpager.widget.ViewPager
 import com.example.adsensedashboard.R
 import com.example.adsensedashboard.databinding.FragmentEarningsBinding
 import com.example.adsensedashboard.ui.recyclerView.adapter.EarningsRecyclerViewAdapter
+import com.example.adsensedashboard.ui.recyclerView.adapter.SectionsPagerAdapter
 import com.example.adsensedashboard.ui.recyclerView.adapter.Sites
 import com.example.adsensedashboard.ui.recyclerView.adapter.SitesListViewAdapter
 import com.example.adsensedashboard.ui.recyclerView.animations.ProductGridItemDecoration
+import com.google.android.material.tabs.TabLayout
 
 
 // TODO: Rename parameter arguments, choose names that match
@@ -94,7 +98,20 @@ class EarningsFragment : Fragment() {
          * */
         val earningsData = listOf("13.56 $", "256.07 $", "2308.46 $", "9008.83 $")
         onEarningsLoadSuccess(earningsData)
+        setupTabView()
+        setupListView()
+    }
 
+    private fun setupTabView() {
+        val sectionsPagerAdapter = SectionsPagerAdapter(requireContext(), parentFragmentManager)
+        val viewPager: ViewPager = binding.sitesLayout.viewPager
+
+        viewPager.adapter = sectionsPagerAdapter
+        val tabs: TabLayout = binding.sitesLayout.tabs
+        tabs.setupWithViewPager(viewPager)
+    }
+
+    private fun setupListView() {
         // use arrayadapter and define an array
         val arrayAdapter: ArrayAdapter<*>
         val users = listOf<Sites>(
@@ -111,7 +128,7 @@ class EarningsFragment : Fragment() {
         )
 
         // access the listView from xml file
-        var mListView = binding.sitesLayout.userlist
+        var mListView = ListView(requireContext())
         arrayAdapter = SitesListViewAdapter(
             requireActivity(), users
         )
