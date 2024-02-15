@@ -37,7 +37,7 @@ class PlaceholderFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
 
-        _binding = FragmentPlaceholderBinding.inflate(inflater, container, false)
+        _binding = FragmentPlaceholderBinding.inflate(inflater, container, true)
         val root = binding.root
 
         val textView: TextView = binding.sectionLabel

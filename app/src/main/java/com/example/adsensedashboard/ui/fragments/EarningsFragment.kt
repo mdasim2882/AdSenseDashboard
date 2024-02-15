@@ -3,6 +3,7 @@ package com.example.adsensedashboard.ui.fragments
 
 import android.annotation.SuppressLint
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.MotionEvent
 import android.view.View
@@ -34,6 +35,8 @@ private const val ARG_PARAM2 = "param2"
  * create an instance of this fragment.
  */
 class EarningsFragment : Fragment() {
+    private val TAG = "EarningsFragment"
+
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
@@ -103,12 +106,13 @@ class EarningsFragment : Fragment() {
     }
 
     private fun setupTabView() {
-        val sectionsPagerAdapter = SectionsPagerAdapter(requireContext(), parentFragmentManager)
+        val sectionsPagerAdapter = SectionsPagerAdapter(requireActivity(), childFragmentManager)
         val viewPager: ViewPager = binding.sitesLayout.viewPager
 
         viewPager.adapter = sectionsPagerAdapter
         val tabs: TabLayout = binding.sitesLayout.tabs
-        tabs.setupWithViewPager(viewPager)
+        tabs.setupWithViewPager(viewPager, true)
+        Log.d(TAG, "setupTabView: ${tabs.isActivated}")
     }
 
     private fun setupListView() {
