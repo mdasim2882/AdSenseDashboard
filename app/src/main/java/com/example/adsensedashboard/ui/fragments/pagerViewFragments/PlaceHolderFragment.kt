@@ -37,7 +37,7 @@ class PlaceholderFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
 
-        _binding = FragmentPlaceholderBinding.inflate(inflater, container, true)
+        _binding = FragmentPlaceholderBinding.inflate(inflater, container, false)
         val root = binding.root
 
         val textView: TextView = binding.sectionLabel
@@ -67,6 +67,7 @@ class PlaceholderFragment : Fragment() {
          */
         @JvmStatic
         fun newInstance(sectionNumber: Int): PlaceholderFragment {
+            Log.d("PlaceHolderFragment", "newInstance: CREATED starting Fragment.....")
             return PlaceholderFragment().apply {
                 arguments = Bundle().apply {
                     putInt(ARG_SECTION_NUMBER, sectionNumber)

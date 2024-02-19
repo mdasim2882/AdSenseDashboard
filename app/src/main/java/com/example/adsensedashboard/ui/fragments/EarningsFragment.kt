@@ -48,6 +48,7 @@ class EarningsFragment : Fragment() {
             param1 = it.getString(ARG_PARAM1)
             param2 = it.getString(ARG_PARAM2)
         }
+
     }
 
     override fun onCreateView(
@@ -59,6 +60,7 @@ class EarningsFragment : Fragment() {
         val view = binding.root
         recyclerView = binding.earningItemsRecyclerView
         setRecyclerView()
+//        setupTabView()
         return view
     }
 
@@ -82,6 +84,9 @@ class EarningsFragment : Fragment() {
             }
     }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        setupTabView()
+    }
 
     @SuppressLint("ClickableViewAccessibility")
     private fun setRecyclerView() {
@@ -101,17 +106,17 @@ class EarningsFragment : Fragment() {
          * */
         val earningsData = listOf("13.56 $", "256.07 $", "2308.46 $", "9008.83 $")
         onEarningsLoadSuccess(earningsData)
-        setupTabView()
+
         setupListView()
     }
 
     private fun setupTabView() {
-        val sectionsPagerAdapter = SectionsPagerAdapter(requireActivity(), childFragmentManager)
+        val sectionsPagerAdapter = SectionsPagerAdapter(requireContext(), parentFragmentManager)
         val viewPager: ViewPager = binding.sitesLayout.viewPager
 
         viewPager.adapter = sectionsPagerAdapter
         val tabs: TabLayout = binding.sitesLayout.tabs
-        tabs.setupWithViewPager(viewPager, true)
+        tabs.setupWithViewPager(viewPager)
         Log.d(TAG, "setupTabView: ${tabs.isActivated}")
     }
 
