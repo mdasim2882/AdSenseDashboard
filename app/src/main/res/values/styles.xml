@@ -6,4 +6,12 @@
     </style>
 
     <style name="Theme.AdSenseDashboard.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="MyTabAppearance" parent="@android:style/TextAppearance.Widget.TabWidget">
+        <item name="android:textSize">14sp</item>
+        <item name="android:textAllCaps">true</item>
+        <item name="android:textStyle">bold</item>
+        <item name="fontFamily">@font/architects_daughter</item>
+        <item name="android:fontFamily">@font/architects_daughter</item>
+    </style>
 </resources>

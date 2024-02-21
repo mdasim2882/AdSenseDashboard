@@ -11,7 +11,8 @@ import com.example.adsensedashboard.ui.fragments.pagerViewFragments.PlaceholderF
 
 private val TAB_TITLES = arrayOf(
     R.string.tab_text_1,
-    R.string.tab_text_2
+    R.string.tab_text_2,
+    R.string.tab_text_3
 )
 
 /**
@@ -31,5 +32,5 @@ class SectionsPagerAdapter(private val context: Context, fm: FragmentManager) :
         return context.resources.getString(TAB_TITLES[position])
     }
 
-    override fun getCount(): Int = 2
+    override fun getCount(): Int = 3
 }

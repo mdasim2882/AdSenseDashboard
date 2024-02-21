@@ -16,18 +16,19 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="30dp"
-            android:background="@drawable/textlines"
-            android:fontFamily="@font/architects_daughter"
-            android:text="Sites (Today's so far)"
-            android:textSize="16sp"
-            android:textStyle="bold" />
+        <!--     <TextView
+                 android:layout_width="match_parent"
+                 android:layout_height="30dp"
+                 android:background="@drawable/textlines"
+                 android:fontFamily="@font/architects_daughter"
+                 android:text="Sites (Today's so far)"
+                 android:textSize="16sp"
+                 android:textStyle="bold" />-->
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="@drawable/textlines"
             android:weightSum="6">
 
             <TextView
@@ -38,6 +39,7 @@
                 android:fontFamily="@font/mclaren"
                 android:gravity="center"
                 android:text="Website"
+                android:textSize="12sp"
                 android:textStyle="bold" />
 
             <TextView
@@ -48,6 +50,8 @@
                 android:fontFamily="@font/mclaren"
                 android:gravity="center"
                 android:text="Estimation Cost"
+                android:textSize="12sp"
+
                 android:textStyle="bold" />
 
             <TextView
@@ -57,6 +61,8 @@
                 android:layout_weight="0.9"
                 android:fontFamily="@font/mclaren"
                 android:gravity="center"
+                android:textSize="12sp"
+
                 android:text="Page Views"
                 android:textStyle="bold" />
 
@@ -65,7 +71,8 @@
                 android:layout_width="0dp"
                 android:fontFamily="@font/mclaren"
                 android:layout_height="match_parent"
-                android:layout_weight="0.8"
+                android:layout_weight="1"
+                android:textSize="12sp"
                 android:gravity="center"
                 android:text="Clicks"
                 android:textStyle="bold" />
@@ -77,7 +84,7 @@
             android:id="@+id/userlist"
             android:layout_marginTop="5dp"
             android:layout_width="match_parent"
-            android:layout_height="150dp"
+            android:layout_height="wrap_content"
             android:scrollbars="vertical"
             android:outlineAmbientShadowColor="@color/black" />
     </LinearLayout>

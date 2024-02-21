@@ -8,7 +8,7 @@
         android:id="@+id/website_name"
         android:layout_width="0dp"
         android:layout_height="match_parent"
-        android:layout_weight="3"
+        android:layout_weight="2.6"
         android:text="website" />
 
     <TextView
@@ -16,14 +16,14 @@
         android:layout_width="0dp"
         android:layout_height="match_parent"
         android:gravity="center"
-        android:layout_weight="1" />
+        android:layout_weight="1.5" />
 
     <TextView
         android:id="@+id/page_views"
         android:layout_width="0dp"
         android:layout_height="match_parent"
         android:gravity="center"
-        android:layout_weight="1" />
+        android:layout_weight="0.9" />
 
     <TextView
         android:id="@+id/click_counts"
