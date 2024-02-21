@@ -1,16 +1,19 @@
 package com.example.adsensedashboard.ui.fragments.pagerViewFragments
 
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
+import android.view.MotionEvent
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
+import android.widget.ArrayAdapter
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import com.example.adsensedashboard.databinding.FragmentPlaceholderBinding
+import com.example.adsensedashboard.databinding.CardPerformanceBinding
+import com.example.adsensedashboard.ui.recyclerView.adapter.Sites
+import com.example.adsensedashboard.ui.recyclerView.adapter.SitesListViewAdapter
 import com.example.adsensedashboard.viewModels.PageViewModel
 import kotlinx.coroutines.DelicateCoroutinesApi
 
@@ -20,7 +23,7 @@ import kotlinx.coroutines.DelicateCoroutinesApi
 class PlaceholderFragment : Fragment() {
     private val TAG = "PlaceHolderFragment"
     private lateinit var pageViewModel: PageViewModel
-    private var _binding: FragmentPlaceholderBinding? = null
+    private var _binding: CardPerformanceBinding? = null
 
     // This property is only valid between onCreateView and
     // onDestroyView.
@@ -37,20 +40,21 @@ class PlaceholderFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
 
-        _binding = FragmentPlaceholderBinding.inflate(inflater, container, false)
+        _binding = CardPerformanceBinding.inflate(inflater, container, false)
         val root = binding.root
 
-        val textView: TextView = binding.sectionLabel
+//        val textView: TextView = binding.sectionLabel
         pageViewModel = ViewModelProvider(requireActivity()).get(PageViewModel::class.java).apply {
             setIndex(arguments?.getInt(ARG_SECTION_NUMBER) ?: 1)
 //            GlobalScope.launch { callAPIusingClientLibrary() }
         }
 //        pageViewModel.response.observe(viewLifecycleOwner, Observer {
 //        })
-        pageViewModel.text.observe(viewLifecycleOwner, Observer {
-            textView.text = it
-            Log.d(TAG, "onCreateView: $it")
-        })
+//        pageViewModel.text.observe(viewLifecycleOwner, {
+//            textView.text = it
+//            Log.d(TAG, "observed onCreateView: $it")
+//        })
+        setupListView()
         return root
     }
 
@@ -83,5 +87,46 @@ class PlaceholderFragment : Fragment() {
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
+    }
+
+
+    //---------------------HELPER METHODS---------------------------
+    @SuppressLint("ClickableViewAccessibility")
+    private fun setupListView() {
+        // use arrayadapter and define an array
+        val arrayAdapter: ArrayAdapter<*>
+        val users = listOf(
+            Sites("www.google.com", "$ 3.86", pageView = "6", clicksCount = "20"),
+            Sites("www.stackoverflow.com", "$ 4.57", pageView = "7", clicksCount = "16"),
+            Sites("www.cisce.org", "$ 3.25", pageView = "13", clicksCount = "9"),
+            Sites("www.wikipedia.org", "$ 13.34", pageView = "17", clicksCount = "14"),
+            Sites("www.geeksforgeeks.org", "$ 4.56", pageView = "26", clicksCount = "34"),
+            Sites("www.cloudskillsboost.google", "$ 6.44", pageView = "89", clicksCount = "56"),
+            Sites("www.cisce.org", "$ 3.25", pageView = "13", clicksCount = "9"),
+            Sites("www.wikipedia.org", "$ 13.34", pageView = "17", clicksCount = "14"),
+            Sites("www.geeksforgeeks.org", "$ 4.56", pageView = "26", clicksCount = "34"),
+            Sites("www.cloudskillsboost.google", "$ 6.44", pageView = "89", clicksCount = "56"),
+        )
+
+        // access the listView from xml file
+        var mListView = binding.userlist
+        arrayAdapter = SitesListViewAdapter(
+            requireActivity(), users
+        )
+        mListView.adapter = arrayAdapter
+        mListView.setOnTouchListener { v, event ->
+            val action = event.action
+            when (action) {
+                MotionEvent.ACTION_DOWN ->                 // Disallow ScrollView to intercept touch events.
+                    v.parent.requestDisallowInterceptTouchEvent(true)
+
+                MotionEvent.ACTION_UP ->                 // Allow ScrollView to intercept touch events.
+                    v.parent.requestDisallowInterceptTouchEvent(false)
+            }
+
+            // Handle ListView touch events.
+            v.onTouchEvent(event)
+            true
+        }
     }
 }

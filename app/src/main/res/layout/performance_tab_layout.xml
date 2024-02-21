@@ -5,7 +5,7 @@
     android:id="@+id/view_pager"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/purple_500"
+    android:background="@android:color/transparent"
     android:focusable="true"
     app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
@@ -13,5 +13,6 @@
         android:id="@+id/tabs"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:tabMode="scrollable" />
+        app:tabPaddingBottom="5dp"
+        app:tabMode="fixed" />
 </androidx.viewpager.widget.ViewPager>
