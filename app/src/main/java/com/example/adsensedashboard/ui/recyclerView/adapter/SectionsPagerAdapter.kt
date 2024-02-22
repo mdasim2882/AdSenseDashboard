@@ -6,6 +6,7 @@ import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentPagerAdapter
 import androidx.fragment.app.FragmentStatePagerAdapter
 import com.example.adsensedashboard.R
+import com.example.adsensedashboard.ui.fragments.pagerViewFragments.PerformanceHolderFragment
 import com.example.adsensedashboard.ui.fragments.pagerViewFragments.PlaceholderFragment
 
 
@@ -28,7 +29,7 @@ class SectionsPagerAdapter(private val context: Context, fm: FragmentManager) :
         var fragment: Fragment? = null
         when (position + 1) {
             1 -> fragment = PlaceholderFragment.newInstance(position + 1)
-            2 -> fragment = PlaceholderFragment.newInstance(position + 1)
+            2 -> fragment = PerformanceHolderFragment.newInstance()
             3 -> fragment = PlaceholderFragment.newInstance(position + 1)
         }
 
