@@ -25,7 +25,14 @@ class SectionsPagerAdapter(private val context: Context, fm: FragmentManager) :
     override fun getItem(position: Int): Fragment {
         // getItem is called to instantiate the fragment for the given page.
         // Return a PlaceholderFragment.
-        return PlaceholderFragment.newInstance(position + 1)
+        var fragment: Fragment? = null
+        when (position + 1) {
+            1 -> fragment = PlaceholderFragment.newInstance(position + 1)
+            2 -> fragment = PlaceholderFragment.newInstance(position + 1)
+            3 -> fragment = PlaceholderFragment.newInstance(position + 1)
+        }
+
+        return fragment!!
     }
 
     override fun getPageTitle(position: Int): CharSequence {

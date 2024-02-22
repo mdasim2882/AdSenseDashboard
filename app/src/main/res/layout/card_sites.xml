@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/sites_card"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:outlineAmbientShadowColor="@color/purple_500"
+    app:cardBackgroundColor="@color/white"
+    app:cardCornerRadius="10dp"
+    app:cardElevation="3dp"
+    app:contentPadding="5dp">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/textlines"
+            android:weightSum="6">
+
+            <TextView
+                android:id="@+id/website_name"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="2.6"
+                android:fontFamily="@font/mclaren"
+                android:gravity="center"
+                android:text="Website"
+                android:textSize="12sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/estimation_cost"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1.5"
+                android:fontFamily="@font/mclaren"
+                android:gravity="center"
+                android:text="Estimation Cost"
+                android:textSize="12sp"
+
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/page_views"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.9"
+                android:fontFamily="@font/mclaren"
+                android:gravity="center"
+                android:textSize="12sp"
+
+                android:text="Page Views"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/click_counts"
+                android:layout_width="0dp"
+                android:fontFamily="@font/mclaren"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:textSize="12sp"
+                android:gravity="center"
+                android:text="Clicks"
+                android:textStyle="bold" />
+
+
+        </LinearLayout>
+
+        <ListView
+            android:id="@+id/userlist"
+            android:layout_marginTop="5dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:scrollbars="vertical"
+            android:outlineAmbientShadowColor="@color/black" />
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>

@@ -11,7 +11,7 @@ import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-import com.example.adsensedashboard.databinding.CardPerformanceBinding
+import com.example.adsensedashboard.databinding.CardSitesBinding
 import com.example.adsensedashboard.ui.recyclerView.adapter.Sites
 import com.example.adsensedashboard.ui.recyclerView.adapter.SitesListViewAdapter
 import com.example.adsensedashboard.viewModels.PageViewModel
@@ -23,7 +23,7 @@ import kotlinx.coroutines.DelicateCoroutinesApi
 class PlaceholderFragment : Fragment() {
     private val TAG = "PlaceHolderFragment"
     private lateinit var pageViewModel: PageViewModel
-    private var _binding: CardPerformanceBinding? = null
+    private var _binding: CardSitesBinding? = null
 
     // This property is only valid between onCreateView and
     // onDestroyView.
@@ -40,7 +40,7 @@ class PlaceholderFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
 
-        _binding = CardPerformanceBinding.inflate(inflater, container, false)
+        _binding = CardSitesBinding.inflate(inflater, container, false)
         val root = binding.root
 
 //        val textView: TextView = binding.sectionLabel
@@ -89,9 +89,8 @@ class PlaceholderFragment : Fragment() {
         _binding = null
     }
 
-
-    //---------------------HELPER METHODS---------------------------
     @SuppressLint("ClickableViewAccessibility")
+    //region Description
     private fun setupListView() {
         // use arrayadapter and define an array
         val arrayAdapter: ArrayAdapter<*>
@@ -129,4 +128,5 @@ class PlaceholderFragment : Fragment() {
             true
         }
     }
+    //endregion
 }

@@ -6,7 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import com.example.adsensedashboard.R
-import com.example.adsensedashboard.databinding.SitesCardBinding
+import com.example.adsensedashboard.databinding.SiteDataItemBinding
 
 
 data class Sites(
@@ -19,7 +19,7 @@ data class Sites(
 class SitesListViewAdapter(context: Context, private val listItems: List<Sites>) :
     ArrayAdapter<Sites>(context, 0, listItems) {
 
-    private lateinit var binding: SitesCardBinding
+    private lateinit var binding: SiteDataItemBinding
 
     override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {
         // convertView which is recyclable view
@@ -28,9 +28,9 @@ class SitesListViewAdapter(context: Context, private val listItems: List<Sites>)
         // of the recyclable view is null then inflate the custom layout for the same
         if (currentItemView == null) {
             currentItemView =
-                LayoutInflater.from(context).inflate(R.layout.sites_card, parent, false)
+                LayoutInflater.from(context).inflate(R.layout.site_data_item, parent, false)
         }
-        binding = SitesCardBinding.bind(currentItemView!!)
+        binding = SiteDataItemBinding.bind(currentItemView!!)
         // get the position of the view from the ArrayAdapter
         val site: Sites? = listItems[position]
 
@@ -45,7 +45,7 @@ class SitesListViewAdapter(context: Context, private val listItems: List<Sites>)
 
         return binding.root
     }
-    
+
     override fun getItemId(position: Int): Long {
         return position.toLong()
     }
