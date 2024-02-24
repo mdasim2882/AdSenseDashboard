@@ -9,182 +9,215 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@color/white"
         android:orientation="vertical">
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Performance Data" />
+            android:text="Yesterday's Data"
+            android:textStyle="bold"
+            android:fontFamily="@font/architects_daughter" />
 
         <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:background="@color/white"
+            android:weightSum="3">
 
             <LinearLayout
-                android:layout_width="match_parent"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_weight="1"
                 android:orientation="vertical"
                 android:weightSum="3">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Page 1"
-                    android:layout_weight="1" />
+                    android:layout_weight="1"
+                    android:text="Page views" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Page 1"
-                    android:layout_weight="1" />
+                    android:layout_weight="1"
+                    android:textSize="24sp"
+                    android:textColor="@color/black"
+                    android:text="1.02K" />
 
 
                 <TextView
+                    android:visibility="gone"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Page 1"
-                    android:layout_weight="1" />
+                    android:layout_weight="1"
+                    android:text="Page 1" />
 
             </LinearLayout>
 
             <LinearLayout
-                android:layout_width="match_parent"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_weight="1"
                 android:orientation="vertical"
                 android:weightSum="3">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Page 1"
-                    android:layout_weight="1" />
+                    android:layout_weight="1"
+                    android:text="Page RPM" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Page 1"
-                    android:layout_weight="1" />
+                    android:layout_weight="1"
+                    android:textSize="24sp"
+                    android:textColor="@color/black"
+                    android:text="$0.10" />
 
 
                 <TextView
+                    android:visibility="gone"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Page 1"
-                    android:layout_weight="1" />
+                    android:layout_weight="1"
+                    android:text="Page 1" />
 
             </LinearLayout>
 
             <LinearLayout
-                android:layout_width="match_parent"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_weight="1"
                 android:orientation="vertical"
                 android:weightSum="3">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Page 1"
-                    android:layout_weight="1" />
+                    android:layout_weight="1"
+                    android:text="Impressions" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Page 1"
-                    android:layout_weight="1" />
+                    android:layout_weight="1"
+                    android:textSize="24sp"
+                    android:textColor="@color/black"
+                    android:text="1.32K" />
 
 
                 <TextView
+                    android:visibility="gone"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Page 1"
-                    android:layout_weight="1" />
+                    android:layout_weight="1"
+                    android:text="Page 1" />
 
             </LinearLayout>
 
         </LinearLayout>
 
         <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:padding="10dp"
+            android:weightSum="3">
 
             <LinearLayout
-                android:layout_width="match_parent"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_weight="1"
                 android:orientation="vertical"
                 android:weightSum="3">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Page 1"
-                    android:layout_weight="1" />
+                    android:layout_weight="1"
+                    android:text="Clicks" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Page 1"
-                    android:layout_weight="1" />
+                    android:layout_weight="1"
+                    android:textSize="24sp"
+                    android:textColor="@color/black"
+                    android:text="4" />
 
 
                 <TextView
+                    android:visibility="gone"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Page 1"
-                    android:layout_weight="1" />
+                    android:layout_weight="1"
+                    android:text="Page 1" />
 
             </LinearLayout>
 
             <LinearLayout
-                android:layout_width="match_parent"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_weight="1"
                 android:orientation="vertical"
                 android:weightSum="3">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Page 1"
-                    android:layout_weight="1" />
+                    android:layout_weight="1"
+                    android:text="CPC" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Page 1"
-                    android:layout_weight="1" />
+                    android:layout_weight="1"
+                    android:textSize="24sp"
+                    android:textColor="@color/black"
+                    android:text="$0.03" />
 
 
                 <TextView
+                    android:visibility="gone"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Page 1"
-                    android:layout_weight="1" />
+                    android:layout_weight="1"
+                    android:text="Page 1" />
 
             </LinearLayout>
 
             <LinearLayout
-                android:layout_width="match_parent"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_weight="1"
                 android:orientation="vertical"
                 android:weightSum="3">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Page 1"
-                    android:layout_weight="1" />
+                    android:layout_weight="1"
+                    android:text="Page CTR" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Page 1"
-                    android:layout_weight="1" />
+                    android:layout_weight="1"
+                    android:textSize="24sp"
+                    android:textColor="@color/black"
+                    android:text="0.39%" />
 
 
                 <TextView
+                    android:visibility="gone"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Page 1"
-                    android:layout_weight="1" />
+                    android:layout_weight="1"
+                    android:text="Page 1" />
 
             </LinearLayout>
         </LinearLayout>
