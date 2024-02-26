@@ -15,9 +15,9 @@
         android:layout_height="wrap_content"
         app:tabTextAppearance="@style/MyTabAppearance"
         android:backgroundTint="@color/purple_500"
-        app:tabIndicatorColor="@color/orange"
+        app:tabIndicatorColor="@color/light_yellow"
         app:tabTextColor="@color/white"
-        app:tabSelectedTextColor="@color/orange"
+        app:tabSelectedTextColor="@color/light_yellow"
         app:tabPaddingBottom="5dp"
         app:tabMode="fixed" />
 </androidx.viewpager.widget.ViewPager>

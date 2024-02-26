@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="4dp"
+    android:weightSum="6">
+
+    <ImageView
+        android:id="@+id/ad_unit_color"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:src="@drawable/circle_modified"
+        android:tint="@color/orange"
+        android:layout_weight="0.2" />
+
+    <TextView
+        android:id="@+id/ad_unit_name"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:layout_weight="4.8" />
+
+    <TextView
+        android:id="@+id/ad_unit_cost"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:textStyle="bold"
+        android:layout_weight="1" />
+
+
+</LinearLayout>

@@ -13,5 +13,6 @@
     <color name="green">#8BC34A</color>
     <color name="purple_700">#0091EA</color>
     <color name="black_overlay">#66000000</color>
-    <color name="orange">#FFBF00</color>
+    <color name="light_yellow">#FFBF00</color>
+    <color name="orange">#FF5722</color>
 </resources>
