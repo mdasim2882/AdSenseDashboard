@@ -29,7 +29,7 @@ class AdUnitsHolderFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         _binding = FragmentAdUnitsHolderBinding.inflate(inflater, container, false)
         val root = binding.root
         adUnitViewModel = ViewModelProvider(this).get(CountriesHolderViewModel::class.java)
@@ -53,7 +53,7 @@ class AdUnitsHolderFragment : Fragment() {
         )
 
         // access the listView from xml file
-        var mListView = binding.adUnitsList
+        val mListView = binding.adUnitsList
         arrayAdapter = AdUnitsListViewAdapter(
             requireActivity(), users
         )
