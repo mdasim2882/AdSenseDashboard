@@ -9,20 +9,20 @@ import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-import com.example.adsensedashboard.databinding.FragmentCountriesHolderBinding
+import com.example.adsensedashboard.databinding.FragmentAdUnitsHolderBinding
 import com.example.adsensedashboard.ui.recyclerView.adapter.AdUnitsData
 import com.example.adsensedashboard.ui.recyclerView.adapter.AdUnitsListViewAdapter
 import com.example.adsensedashboard.viewModels.CountriesHolderViewModel
 
-class CountriesHolderFragment : Fragment() {
+class AdUnitsHolderFragment : Fragment() {
 
     private lateinit var adUnitViewModel: CountriesHolderViewModel
-    private var _binding: FragmentCountriesHolderBinding? = null
+    private var _binding: FragmentAdUnitsHolderBinding? = null
     private val binding get() = _binding!!
 
 
     companion object {
-        fun newInstance() = CountriesHolderFragment()
+        fun newInstance() = AdUnitsHolderFragment()
     }
 
 
@@ -30,7 +30,7 @@ class CountriesHolderFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        _binding = FragmentCountriesHolderBinding.inflate(inflater, container, false)
+        _binding = FragmentAdUnitsHolderBinding.inflate(inflater, container, false)
         val root = binding.root
         adUnitViewModel = ViewModelProvider(this).get(CountriesHolderViewModel::class.java)
         setupListView()

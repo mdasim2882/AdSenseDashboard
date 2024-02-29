@@ -15,6 +15,6 @@
     <string name="dummy_content">PAYMENTS\nREPORT</string>
     <string name="helpdeskDescription">To suggest any feature,\nplease contact on the above email...</string>
     <string name="tab_text_3">Sites (Today\'s so far)</string>
-    <string name="tab_text_2">Performance</string>
-    <string name="tab_text_1">Estimated Earnings</string>
+    <string name="tab_text_2">Ad Units</string>
+    <string name="tab_text_1">Performance</string>
 </resources>
