@@ -5,11 +5,8 @@ import android.annotation.SuppressLint
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
-import android.view.MotionEvent
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ArrayAdapter
-import android.widget.ListView
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -18,8 +15,6 @@ import com.example.adsensedashboard.R
 import com.example.adsensedashboard.databinding.FragmentEarningsBinding
 import com.example.adsensedashboard.ui.recyclerView.adapter.EarningsRecyclerViewAdapter
 import com.example.adsensedashboard.ui.recyclerView.adapter.SectionsPagerAdapter
-import com.example.adsensedashboard.ui.recyclerView.adapter.Sites
-import com.example.adsensedashboard.ui.recyclerView.adapter.SitesListViewAdapter
 import com.example.adsensedashboard.ui.recyclerView.animations.ProductGridItemDecoration
 import com.google.android.material.tabs.TabLayout
 
@@ -60,7 +55,7 @@ class EarningsFragment : Fragment() {
         val view = binding.root
         recyclerView = binding.earningItemsRecyclerView
         setRecyclerView()
-//        setupTabView()
+        setupTabView()
         return view
     }
 
@@ -85,7 +80,8 @@ class EarningsFragment : Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        setupTabView()
+//        setupTabView()
+        // TODO : Need to check which is the best place to initialize the Tab Layout
     }
 
     @SuppressLint("ClickableViewAccessibility")
@@ -107,7 +103,6 @@ class EarningsFragment : Fragment() {
         val earningsData = listOf("13.56 $", "256.07 $", "2308.46 $", "9008.83 $")
         onEarningsLoadSuccess(earningsData)
 
-        setupListView()
     }
 
     private fun setupTabView() {
@@ -120,44 +115,6 @@ class EarningsFragment : Fragment() {
         Log.d(TAG, "setupTabView: ${tabs.isActivated}")
     }
 
-    @SuppressLint("ClickableViewAccessibility")
-    private fun setupListView() {
-        // use arrayadapter and define an array
-        val arrayAdapter: ArrayAdapter<*>
-        val users = listOf<Sites>(
-            Sites("www.google.com", "$ 3.86", pageView = "6", clicksCount = "20"),
-            Sites("www.stackoverflow.com", "$ 4.57", pageView = "7", clicksCount = "16"),
-            Sites("www.cisce.org", "$ 3.25", pageView = "13", clicksCount = "9"),
-            Sites("www.wikipedia.org", "$ 13.34", pageView = "17", clicksCount = "14"),
-            Sites("www.geeksforgeeks.org", "$ 4.56", pageView = "26", clicksCount = "34"),
-            Sites("www.cloudskillsboost.google", "$ 6.44", pageView = "89", clicksCount = "56"),
-            Sites("www.cisce.org", "$ 3.25", pageView = "13", clicksCount = "9"),
-            Sites("www.wikipedia.org", "$ 13.34", pageView = "17", clicksCount = "14"),
-            Sites("www.geeksforgeeks.org", "$ 4.56", pageView = "26", clicksCount = "34"),
-            Sites("www.cloudskillsboost.google", "$ 6.44", pageView = "89", clicksCount = "56"),
-        )
-
-        // access the listView from xml file
-        var mListView = ListView(requireContext())
-        arrayAdapter = SitesListViewAdapter(
-            requireActivity(), users
-        )
-        mListView.adapter = arrayAdapter
-        mListView.setOnTouchListener { v, event ->
-            val action = event.action
-            when (action) {
-                MotionEvent.ACTION_DOWN ->                 // Disallow ScrollView to intercept touch events.
-                    v.parent.requestDisallowInterceptTouchEvent(true)
-
-                MotionEvent.ACTION_UP ->                 // Allow ScrollView to intercept touch events.
-                    v.parent.requestDisallowInterceptTouchEvent(false)
-            }
-
-            // Handle ListView touch events.
-            v.onTouchEvent(event)
-            true
-        }
-    }
 
     fun onEarningsLoadSuccess(templates: List<String>) {
         val adapter = EarningsRecyclerViewAdapter(requireContext(), templates)
