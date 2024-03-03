@@ -2,9 +2,9 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:background="@color/light_blue_600"
-    android:layout_height="match_parent"
     android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/light_blue_600"
     tools:context=".ui.fragments.PaymentsFragment">
 
 
@@ -46,7 +46,12 @@
             android:id="@+id/weeklyCard"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:cardCornerRadius="7dp">
+            app:cardCornerRadius="7dp"
+            app:cardElevation="0dp"
+            android:layout_marginTop="0dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp">
+
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -57,7 +62,7 @@
                 <TextView
                     android:id="@+id/priceTitle"
                     android:layout_width="match_parent"
-                    android:layout_height="50dp"
+                    android:layout_height="30dp"
 
                     android:text="Your Earnings"
                     android:textAlignment="center"
@@ -66,14 +71,90 @@
                 <TextView
                     android:id="@+id/price"
                     android:layout_width="match_parent"
-                    android:layout_height="50dp"
+                    android:layout_height="70dp"
                     android:gravity="center"
                     android:text="250.76 $"
                     android:textAlignment="center"
-                    android:textSize="18sp" />
+                    android:textSize="22sp"
+                    android:textStyle="bold" />
             </LinearLayout>
         </androidx.cardview.widget.CardView>
+
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:cardBackgroundColor="@color/white"
+            app:cardElevation="0dp"
+            app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.Material3.Corner.Top"
+            android:layout_marginTop="5dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            app:strokeWidth="0dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="5dp"
+                    android:background="@drawable/textlines"
+                    android:weightSum="7">
+
+                    <TextView
+                        android:id="@+id/website_name"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="3"
+                        android:fontFamily="@font/mclaren"
+                        android:gravity="center"
+                        android:text="Site URL"
+                        android:textSize="12sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/estimation_cost"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="2"
+                        android:fontFamily="@font/mclaren"
+                        android:gravity="center"
+                        android:text="Approval Status"
+                        android:textSize="12sp"
+
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/page_views"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="2"
+                        android:fontFamily="@font/mclaren"
+                        android:gravity="center"
+                        android:textSize="12sp"
+
+                        android:text="Ads.txt Status"
+                        android:textStyle="bold" />
+
+
+                </LinearLayout>
+
+                <ListView
+                    android:id="@+id/sites_manager_list"
+                    android:layout_marginTop="5dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:scrollbars="vertical"
+                    android:outlineAmbientShadowColor="@color/black" />
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+
     </LinearLayout>
+
 
 </RelativeLayout>
 
