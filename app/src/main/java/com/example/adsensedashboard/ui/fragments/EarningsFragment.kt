@@ -37,7 +37,7 @@ private const val ARG_PARAM2 = "param2"
 class EarningsFragment : Fragment() {
     private val TAG = "EarningsFragment"
 
-    // TODO: Rename and change types of parameters
+    // TODO: Earnings - Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
     private lateinit var binding: FragmentEarningsBinding
@@ -120,6 +120,7 @@ class EarningsFragment : Fragment() {
         Log.d(TAG, "setupTabView: ${tabs.isActivated}")
     }
 
+    @SuppressLint("ClickableViewAccessibility")
     private fun setupListView() {
         // use arrayadapter and define an array
         val arrayAdapter: ArrayAdapter<*>
@@ -142,7 +143,7 @@ class EarningsFragment : Fragment() {
             requireActivity(), users
         )
         mListView.adapter = arrayAdapter
-        mListView.setOnTouchListener({ v, event ->
+        mListView.setOnTouchListener { v, event ->
             val action = event.action
             when (action) {
                 MotionEvent.ACTION_DOWN ->                 // Disallow ScrollView to intercept touch events.
@@ -155,7 +156,7 @@ class EarningsFragment : Fragment() {
             // Handle ListView touch events.
             v.onTouchEvent(event)
             true
-        })
+        }
     }
 
     fun onEarningsLoadSuccess(templates: List<String>) {

@@ -33,9 +33,12 @@
 
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
+        android:isScrollContainer="false"
         android:fillViewport="true"
         android:elevation="8dp"
+        android:scrollbarAlwaysDrawVerticalTrack="true"
+        android:scrollbars="vertical"
         android:layout_below="@id/appBarLayout"
         app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
@@ -72,10 +75,11 @@
             <include
                 android:id="@+id/sites_layout"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="230dp"
                 android:layout_marginTop="10dp"
                 android:layout_margin="3.2dp"
                 layout="@layout/performance_tab_layout" />
+
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>
 

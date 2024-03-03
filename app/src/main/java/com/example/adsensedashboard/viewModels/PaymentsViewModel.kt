@@ -1,4 +1,4 @@
-package com.example.adsensedashboard.ui.fragments
+package com.example.adsensedashboard.viewModels
 
 import androidx.lifecycle.ViewModel
 

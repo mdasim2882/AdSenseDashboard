@@ -10,6 +10,7 @@ import com.example.adsensedashboard.R
 import com.example.adsensedashboard.databinding.ActivityConsoleUiBinding
 import com.example.adsensedashboard.ui.fragments.EarningsFragment
 import com.example.adsensedashboard.ui.fragments.PaymentsFragment
+import com.example.adsensedashboard.ui.fragments.SettingsFragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 private const val TAG = "ConsoleUiActivity"
@@ -40,7 +41,7 @@ class ConsoleUiActivity : AppCompatActivity() {
 
                 R.id.action_earnings -> loadFromFragment(EarningsFragment())
                 R.id.action_payments -> loadFromFragment(PaymentsFragment())
-                R.id.action_settings -> loadFromFragment(EarningsFragment())
+                R.id.action_settings -> loadFromFragment(SettingsFragment())
                 else -> loadFromFragment(null)
             }
         }
