@@ -1,0 +1,34 @@
+<resources>
+
+    <style name="Widget.Theme.AdSenseDashboard.ButtonBar.Fullscreen" parent="">
+        <item name="android:background">@color/black_overlay</item>
+        <item name="android:buttonBarStyle">?android:attr/buttonBarStyle</item>
+    </style>
+
+    <style name="Theme.AdSenseDashboard.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="MyTabAppearance" parent="@android:style/TextAppearance.Widget.TabWidget">
+        <item name="android:textSize">14sp</item>
+        <item name="android:textAllCaps">true</item>
+        <item name="android:textStyle">bold</item>
+        <item name="fontFamily">@font/architects_daughter</item>
+        <item name="android:fontFamily">@font/architects_daughter</item>
+    </style>
+
+    <!--    Shape appearance for sites in Card Layout-->
+
+    <style name="ShapeAppearanceOverlay.Material3.Corner.Top." parent="">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSizeTopRight">8dp</item>
+        <item name="cornerSizeTopLeft">8dp</item>
+        <item name="cornerSizeBottomRight">0dp</item>
+        <item name="cornerSizeBottomLeft">0dp</item>
+    </style>
+
+    <style name="MyCardView" parent="@style/Widget.MaterialComponents.CardView">
+        <item name="shapeAppearanceOverlay">
+            @style/ShapeAppearanceOverlay.Material3.Corner.Top
+        </item>
+    </style>
+
+</resources>

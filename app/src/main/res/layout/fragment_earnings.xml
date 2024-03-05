@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+
+    tools:context=".ui.fragments.EarningsFragment">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/appBarLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/red"
+        android:elevation="4dp"
+        android:gravity="center">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/helpdesk_greets_details_toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:layout_gravity="center"
+            android:layout_marginStart="10dp"
+            android:layout_marginLeft="10dp"
+            android:foregroundGravity="center"
+            android:gravity="center"
+            android:textAlignment="gravity"
+            app:title="Earnings"
+            app:titleTextAppearance="@style/AppLayoutAdsenseDashboard.ActiveItemTextAppearance"
+            app:titleTextColor="@color/white" />
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:isScrollContainer="false"
+        android:fillViewport="true"
+        android:elevation="8dp"
+        android:scrollbarAlwaysDrawVerticalTrack="true"
+        android:scrollbars="vertical"
+        android:layout_below="@id/appBarLayout"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+
+            android:layout_below="@id/appBarLayout"
+            android:orientation="vertical"
+            android:paddingStart="@dimen/cardview_default_elevation"
+            android:paddingTop="5dp"
+            android:paddingEnd="@dimen/cardview_default_elevation">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/green"
+                android:fontFamily="@font/mclaren"
+                android:padding="5dp"
+                android:text="Summary"
+                android:textAlignment="center"
+                android:textAllCaps="true"
+                android:textColor="@color/white"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/earningItemsRecyclerView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layoutAnimation="@anim/layout_animation" />
+
+            <include
+                android:id="@+id/sites_layout"
+                android:layout_width="match_parent"
+                android:layout_height="230dp"
+                android:layout_marginTop="10dp"
+                android:layout_margin="3.2dp"
+                layout="@layout/performance_tab_layout" />
+
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+
+</RelativeLayout>
+
