@@ -64,6 +64,14 @@ class AuthViewModel(
         }
     }
 
+    /*
+    * Got an ID token from Google. Use it to authenticate with Firebase.
+    * You can also get the user's email address with getEmail, the user's Google
+    * ID (for client-side use) with getId, and an ID token for the user with
+    * getIdToken. If you need to pass the currently signed-in user to a backend
+    * server, send the ID token to your backend server and validate the token on
+    * the server.
+    * */
     private fun firebaseAuthWithGoogle(idToken: String) {
         val credential = GoogleAuthProvider.getCredential(idToken, null)
         mAuth.signInWithCredential(credential)
