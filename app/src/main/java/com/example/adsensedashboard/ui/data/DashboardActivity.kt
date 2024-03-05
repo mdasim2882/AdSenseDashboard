@@ -107,12 +107,16 @@ class DashboardActivity : AppCompatActivity() {
         GlobalScope.launch {
             val token = generateAccessToken()
             Log.d(TAG, "makeAPICall: ACCESS TOKEN : ${token}")
+            Log.d(
+                TAG,
+                "makeAPICall: SERVER AUTH CODE : ${GoogleSignIn.getLastSignedInAccount(this@DashboardActivity)?.serverAuthCode}"
+            )
             token?.let {
                 val account = viewModel.getAccount("Bearer ${token}", JSON_FORMAT)
                 account?.let {
                     val payments = viewModel.getPayments(
-//                        account.accounts[0].name,
-                        "pub-7890024740593023",
+                        account.accounts[0].name.split('/')[1],
+//                        "pub-7890024740593023",
                         "Bearer ${token}",
                         JSON_FORMAT
                     )
@@ -126,12 +130,15 @@ class DashboardActivity : AppCompatActivity() {
     private fun generateAccessToken(): String? {
         var token: String? = null
         try {
+            // Check for existing Google Sign In account, if the user is already signed in
+            // the GoogleSignInAccount will be non-null
             val currentAccount = GoogleSignIn.getLastSignedInAccount(this@DashboardActivity)
             currentAccount?.let { signin ->
                 val credential = GoogleAccountCredential.usingOAuth2(
                     this@DashboardActivity,
                     listOf("https://www.googleapis.com/auth/adsense.readonly")
                 ).setSelectedAccount(signin.account)
+
                 // TODO : Setup Backoff if needed
 
                 token = credential.token

@@ -27,6 +27,9 @@ class DashboardViewModel(
                 response.postValue(accountResp)
 
                 Log.d(TAG, "getAccounts: RESPONSE RETROFIT= ${response.value}..")
+
+                // Most probably, it will always be null because we're using
+                // it's value on background thread
                 response.value?.let { res ->
                     Log.d(TAG, "getAccount: DATA FROM CLASS ${res.accounts[0]}")
                     Log.d(TAG, "getAccount: DATA : account_name = ${res.accounts[0].name}")
@@ -46,11 +49,12 @@ class DashboardViewModel(
                     .getPayments(accountId, accessToken, accept).body()
                 responsePaymentsAPI.postValue(accountResp)
 
-                Log.d(TAG, "getPayments: RESPONSE PAYMENT RETROFIT= ${responsePaymentsAPI.value}..")
-                // TODO: Need to fix this call as it is getting called immediately with null value
-                //  while the response is loading... hence not providing payment response after
-                //  fetching account data
-
+                Log.d(
+                    TAG,
+                    "getPayments: RESPONSE PAYMENT RETROFIT= ${responsePaymentsAPI.value}.. accountID : ${accountId} and accountResp : ${accountResp}"
+                )
+                // Most probably, it will always be null because we're using
+                // it's value on background thread
                 responsePaymentsAPI.value?.let { res ->
                     Log.d(TAG, "getPayments: DATA FROM CLASS ${res.payments}")
                     Log.d(TAG, "getPayments: DATA : ammount = ${res.payments[0].amount}")
