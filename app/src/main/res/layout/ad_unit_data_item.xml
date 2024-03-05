@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:padding="4dp"
@@ -10,8 +11,8 @@
         android:layout_width="0dp"
         android:layout_height="match_parent"
         android:src="@drawable/circle_modified"
-        android:tint="@color/orange"
-        android:layout_weight="0.2" />
+        android:layout_weight="0.2"
+        app:tint="@color/orange" />
 
     <TextView
         android:id="@+id/ad_unit_name"

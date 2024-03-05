@@ -5,23 +5,31 @@
     android:weightSum="7">
 
     <TextView
-        android:id="@+id/website_name"
+        android:id="@+id/site_url"
         android:layout_width="0dp"
         android:layout_height="match_parent"
         android:layout_weight="3"
         android:text="website" />
 
     <TextView
-        android:id="@+id/estimation_cost"
+        android:id="@+id/approval_status"
         android:layout_width="0dp"
         android:layout_height="match_parent"
         android:gravity="center"
+        android:background="@drawable/rounded_corner"
+        android:layout_margin="5dp"
+        android:backgroundTint="@color/green"
+        android:textColor="@color/white"
         android:layout_weight="2" />
 
     <TextView
-        android:id="@+id/page_views"
+        android:id="@+id/ads_txt_status"
         android:layout_width="0dp"
         android:layout_height="match_parent"
+        android:background="@drawable/rounded_corner"
+        android:backgroundTint="@color/green"
+        android:textColor="@color/white"
+        android:layout_margin="5dp"
         android:gravity="center"
         android:layout_weight="2" />
 
