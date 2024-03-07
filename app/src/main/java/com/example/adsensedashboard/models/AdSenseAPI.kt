@@ -25,4 +25,15 @@ interface AdSenseServiceAPI {
         @Header("Accept") accept: String
     ): Response<ResponseAdSenseAPI>
 
+    @GET("v2/accounts/{accountId}/reports:generate?dateRange=YESTERDAY&metrics=PAGE_VIEWS&metrics=PAGE_VIEWS_RPM&metrics=IMPRESSIONS&metrics=CLICKS&metrics=COST_PER_CLICK&metrics=PAGE_VIEWS_CTR{accountId}")
+    suspend fun getPerformanceDetails(
+
+        @Path("accountId") accountId: String,
+        @Header("Authorization") authorization: String,
+        @Header("Accept") accept: String,
+        @Query("dateRange") dateRange: String,
+        @Query("metrics") metrics: List<String>
+
+    ): Response<ResponseAdSenseAPI>
+
 }

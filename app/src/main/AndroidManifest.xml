@@ -15,7 +15,7 @@
         android:theme="@style/Theme.AdSenseDashboard"
         tools:targetApi="31">
         <activity
-            android:name=".ui.data.ConsoleUiActivity"
+            android:name=".ui.home.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -24,10 +24,10 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".ui.data.DashboardActivity"
+            android:name=".ui.data.ConsoleUiActivity"
             android:exported="false" />
         <activity
-            android:name=".ui.home.MainActivity"
+            android:name=".ui.data.DashboardActivity"
             android:exported="false">
 
         </activity>

@@ -1,5 +1,6 @@
 package com.example.adsensedashboard.ui.data
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.View
@@ -39,6 +40,12 @@ class DashboardActivity : AppCompatActivity() {
     private fun setOnClickButtons() {
         // TODO("Not yet implemented")
         binding.logoutBtn.setOnClickListener { v: View -> performSignOut() }
+        binding.navigateBtn.setOnClickListener { v: View ->
+            Intent(
+                this,
+                ConsoleUiActivity::class.java
+            ).apply { startActivity(this) }
+        }
     }
 
     private fun performSignOut() {
@@ -96,9 +103,10 @@ class DashboardActivity : AppCompatActivity() {
 
     private fun <T> updateUI(responseAdSenseAPI: T) {
         Log.d(TAG, "updateUI: Called with ${responseAdSenseAPI.toString()}")
-        val JSON_DATA = Gson().toJson(responseAdSenseAPI)
-        binding.sampleApiRespnse.text = JSON_DATA
-        Log.d(TAG, "updateUI: RESPONSE ON DASHBOARD UI= $JSON_DATA")
+        val jsonData = Gson().toJson(responseAdSenseAPI)
+        binding.sampleApiRespnse.text =
+            String.format("${binding.sampleApiRespnse.text} \n $jsonData")
+        Log.d(TAG, "updateUI: RESPONSE ON DASHBOARD UI= $jsonData")
     }
 
 
@@ -106,7 +114,7 @@ class DashboardActivity : AppCompatActivity() {
     private fun makeAPICall() {
         GlobalScope.launch {
             val token = generateAccessToken()
-            Log.d(TAG, "makeAPICall: ACCESS TOKEN : ${token}")
+            Log.d(TAG, "makeAPICall: ACCESS TOKEN : $token")
             Log.d(
                 TAG,
                 "makeAPICall: SERVER AUTH CODE : ${GoogleSignIn.getLastSignedInAccount(this@DashboardActivity)?.serverAuthCode}"
