@@ -6,6 +6,7 @@ import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.DefaultLifecycleObserver
 import androidx.lifecycle.MutableLiveData
 import com.example.adsensedashboard.models.RetrofitClient
+import com.example.adsensedashboard.models.api.PerformanceTest
 import com.example.adsensedashboard.models.api.ResponseAdSenseAPI
 import com.example.adsensedashboard.models.api.ResponsePaymentsAPI
 import kotlinx.coroutines.Dispatchers
@@ -18,6 +19,7 @@ class DashboardViewModel(
     private val TAG = "DashboardViewModel"
     var response = MutableLiveData<ResponseAdSenseAPI?>(null)
     var responsePaymentsAPI = MutableLiveData<ResponsePaymentsAPI?>(null)
+    var responseSitesAPI = MutableLiveData<PerformanceTest?>(null)
 
     suspend fun getAccount(accessToken: String, accept: String) =
         withContext(Dispatchers.IO) {
@@ -58,6 +60,38 @@ class DashboardViewModel(
                 responsePaymentsAPI.value?.let { res ->
                     Log.d(TAG, "getPayments: DATA FROM CLASS ${res.payments}")
                     Log.d(TAG, "getPayments: DATA : ammount = ${res.payments[0].amount}")
+                }
+            } catch (e: Exception) {
+                e.printStackTrace()
+                updateUI()
+                null
+            }
+        }
+
+    suspend fun getSites(
+        accountId: String,
+        accessToken: String,
+        accept: String,
+        dateRange: String,
+        metrics: List<String>,
+        dimensions: List<String>
+    ) =
+        withContext(Dispatchers.IO) {
+            try {
+                val accountResp = RetrofitClient.adSenseService
+                    .getSitesDetails(accountId, accessToken, accept, dateRange, metrics, dimensions)
+                    .body()
+                responseSitesAPI.postValue(accountResp)
+
+                Log.d(
+                    TAG,
+                    "getSites: RESPONSE SITES RETROFIT= ${response.value}.. accountID : ${accountId} and accountResp : ${accountResp}"
+                )
+                // Most probably, it will always be null because we're using
+                // it's value on background thread
+                responseSitesAPI.value?.let { res ->
+                    Log.d(TAG, "getSites: DATA FROM CLASS ${res.rows}")
+                    Log.d(TAG, "getSites: DATA : Totals = ${res.totals}")
                 }
             } catch (e: Exception) {
                 e.printStackTrace()

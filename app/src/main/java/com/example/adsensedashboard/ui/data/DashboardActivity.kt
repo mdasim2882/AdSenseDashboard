@@ -98,6 +98,14 @@ class DashboardActivity : AppCompatActivity() {
             }
             updateUI(it)
         }
+        viewModel.responseSitesAPI.observe(this) {
+            Log.d(TAG, "onCreate: Fetching responseSitesAPI Response...from Observer")
+            if (it == null) {
+                Log.d(TAG, "onCreate: NULL Response")
+                return@observe
+            }
+            updateUI(it)
+        }
     }
 
 
@@ -120,13 +128,24 @@ class DashboardActivity : AppCompatActivity() {
                 "makeAPICall: SERVER AUTH CODE : ${GoogleSignIn.getLastSignedInAccount(this@DashboardActivity)?.serverAuthCode}"
             )
             token?.let {
-                val account = viewModel.getAccount("Bearer ${token}", JSON_FORMAT)
+                val account = viewModel.getAccount("Bearer $token", JSON_FORMAT)
                 account?.let {
                     val payments = viewModel.getPayments(
                         account.accounts[0].name.split('/')[1],
 //                        "pub-7890024740593023",
-                        "Bearer ${token}",
+                        "Bearer $token",
                         JSON_FORMAT
+                    )
+                    val dimensions = listOf<String>()
+                    val metrics = listOf("ESTIMATED_EARNINGS")
+                    val sites = viewModel.getSites(
+                        account.accounts[0].name.split('/')[1],
+//                        "pub-7890024740593023",
+                        "Bearer ${token}",
+                        JSON_FORMAT,
+                        "YESTERDAY",
+                        metrics,
+                        dimensions
                     )
 
                 }

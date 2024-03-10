@@ -1,7 +1,9 @@
 package com.example.adsensedashboard.models
 
+import com.example.adsensedashboard.models.api.PerformanceTest
 import com.example.adsensedashboard.models.api.ResponseAdSenseAPI
 import com.example.adsensedashboard.models.api.ResponsePaymentsAPI
+import com.example.adsensedashboard.models.api.ResponsePerformanceAPI
 import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Header
@@ -25,15 +27,23 @@ interface AdSenseServiceAPI {
         @Header("Accept") accept: String
     ): Response<ResponseAdSenseAPI>
 
-    @GET("v2/accounts/{accountId}/reports:generate?dateRange=YESTERDAY&metrics=PAGE_VIEWS&metrics=PAGE_VIEWS_RPM&metrics=IMPRESSIONS&metrics=CLICKS&metrics=COST_PER_CLICK&metrics=PAGE_VIEWS_CTR{accountId}")
+    @GET("v2/accounts/{accountId}/reports:generate")
     suspend fun getPerformanceDetails(
-
         @Path("accountId") accountId: String,
         @Header("Authorization") authorization: String,
         @Header("Accept") accept: String,
         @Query("dateRange") dateRange: String,
         @Query("metrics") metrics: List<String>
+    ): Response<ResponsePerformanceAPI>
 
-    ): Response<ResponseAdSenseAPI>
+    @GET("v2/accounts/{accountId}/reports:generate")
+    suspend fun getSitesDetails(
+        @Path("accountId") accountId: String,
+        @Header("Authorization") authorization: String,
+        @Header("Accept") accept: String,
+        @Query("dateRange") dateRange: String,
+        @Query("metrics") metrics: List<String>,
+        @Query("dimensions") dimensions: List<String>
+    ): Response<PerformanceTest>
 
 }
