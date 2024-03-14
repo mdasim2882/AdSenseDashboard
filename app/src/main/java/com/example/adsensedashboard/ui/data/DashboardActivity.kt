@@ -90,7 +90,24 @@ class DashboardActivity : AppCompatActivity() {
             // TODO: Try to use the accountId from here and then call getPayments()
             updateUI(it)
         }
+        viewModel.responseAdClients.observe(this) {
+            Log.d(TAG, "onCreate: Fetching Response...from Observer")
+            if (it == null) {
+                Log.d(TAG, "onCreate: NULL Response")
+                return@observe
+            }
+            // TODO: Try to use the accountId from here and then call getPayments()
+            updateUI(it)
+        }
         viewModel.responsePaymentsAPI.observe(this) {
+            Log.d(TAG, "onCreate: Fetching responsePaymentsAPI Response...from Observer")
+            if (it == null) {
+                Log.d(TAG, "onCreate: NULL Response")
+                return@observe
+            }
+            updateUI(it)
+        }
+        viewModel.responseAdUnitsAPI.observe(this) {
             Log.d(TAG, "onCreate: Fetching responsePaymentsAPI Response...from Observer")
             if (it == null) {
                 Log.d(TAG, "onCreate: NULL Response")
@@ -113,7 +130,7 @@ class DashboardActivity : AppCompatActivity() {
         Log.d(TAG, "updateUI: Called with ${responseAdSenseAPI.toString()}")
         val jsonData = Gson().toJson(responseAdSenseAPI)
         binding.sampleApiRespnse.text =
-            String.format("${binding.sampleApiRespnse.text} \n $jsonData")
+            String.format("${binding.sampleApiRespnse.text} \n $jsonData \n\n\n")
         Log.d(TAG, "updateUI: RESPONSE ON DASHBOARD UI= $jsonData")
     }
 
@@ -141,12 +158,30 @@ class DashboardActivity : AppCompatActivity() {
                     val sites = viewModel.getSites(
                         account.accounts[0].name.split('/')[1],
 //                        "pub-7890024740593023",
-                        "Bearer ${token}",
+                        "Bearer $token",
                         JSON_FORMAT,
                         "YESTERDAY",
                         metrics,
                         dimensions
                     )
+                    val adClients = viewModel.getAdClients(
+                        account.accounts[0].name.split('/')[1],
+//                        "pub-7890024740593023",
+                        "Bearer $token",
+                        JSON_FORMAT,
+                    )
+                    adClients?.let { adClientsList ->
+                        adClientsList.adClients.forEach {
+                            val clientsList = it.name.split('/')
+                            val adUnits = viewModel.getAdUnits(
+                                account.accounts[0].name.split('/')[1],
+                                clientsList[clientsList.size - 1],
+                                "Bearer $token",
+                                JSON_FORMAT,
+                            )
+                        }
+
+                    }
 
                 }
             }
